@@ -1,8 +1,8 @@
-**E2E Authentication Testing Framework**
+# E2E Authentication Testing Framework
 
 Un framework de tests End-to-End (E2E) pour valider un système complet d’authentification (login, logout, navigation) en utilisant Selenium + Java + TestNG + Allure avec une approche data-driven via Excel.
 
-Stack Technique
+### Stack Technique
 - Java 17
 - Selenium WebDriver
 - TestNG
@@ -11,13 +11,13 @@ Stack Technique
 - Apache POI (Excel)
 - Maven
 
-Fonctionnalités Testées
+### Fonctionnalités Testées
 - Login avec données valides
 - Login avec données invalides
 - Affichage du message de bienvenue
 - Logout utilisateur
 
-Améliorations Futures
+### Améliorations Futures
 - CI/CD avec GitHub Actions
 - Dockerisation
 
