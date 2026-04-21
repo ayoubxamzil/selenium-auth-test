@@ -17,17 +17,20 @@ public class DashboardTest extends BaseTest {
         return ExcelUtil.getData(ConfigReader.get("EXCEL_PATH"), "loginValid");
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, dataProvider = "loginValidPaths")
     @Story("logout")
     @Severity(SeverityLevel.BLOCKER)
     @Description("vérifier que l'utilisateur peut se déconnecter et être redirigé vers /login")
-    public void testLogoutSuccess() {
+    public void testLogoutSuccess(String email, String password,
+                                  String expectedResult, String testCase) {
+
+        System.out.println("Test case: " + testCase);
 
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboard = new DashboardPage();
 
         loginPage.visit();
-        loginPage.login("ayoubamzil@email.com", "Password123");
+        loginPage.login(email, password);
 
         Assert.assertTrue(
                 dashboard.isOnDashboard(),
@@ -52,13 +55,14 @@ public class DashboardTest extends BaseTest {
     @Story("affichage utilisateur")
     @Severity(SeverityLevel.NORMAL)
     @Description("le dashboard affiche un message de bienvenue après connexion")
-    public void testDashboardDisplaysWelcomeMessage() {
+    public void testDashboardDisplaysWelcomeMessage(String email, String password,
+                                         String expectedResult, String testCase) {
 
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboard = new DashboardPage();
 
         loginPage.visit();
-        loginPage.login("valid@email.com", "Password123");
+        loginPage.login(email, password);
 
         String title = dashboard.getWelcomeTitle();
 

@@ -9,7 +9,7 @@ public class ConfigReader {
     private static Properties props = new Properties();
 
     static {
-        String path = "/src/main/resources/config.properties";
+        String path = System.getProperty("user.dir") + "/src/main/resources/config.properties";
         try (FileInputStream fis = new FileInputStream(path)) {
             props.load(fis);
         } catch (IOException e) {

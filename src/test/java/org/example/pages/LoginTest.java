@@ -26,7 +26,7 @@ public class LoginTest extends BaseTest {
     @Story("login valide")
     @Description("vérifier que l'utilisateur peut se connecter avec des informations valides")
     @Severity(SeverityLevel.CRITICAL)
-    public void testLoginSuccess(String email, String password) {
+    public void testLoginSuccess(String email, String password, String expectedResult, String testCase) {
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboard = new DashboardPage();
 
@@ -41,11 +41,6 @@ public class LoginTest extends BaseTest {
                 dashboard.getWelcomeTitle().contains("Welcome"),
                 "le titre doit contenir 'Welcome'"
         );
-    }
-
-    @Test
-    public void debugFail() {
-        Assert.assertTrue(false);
     }
 
     @Test(priority = 2, dataProvider = "loginInvalidPaths")
